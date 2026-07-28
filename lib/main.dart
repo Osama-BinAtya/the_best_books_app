@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:the_best_books_app/screens/intro_screen.dart';
 
-// متغير بسيط لإدارة الثيم (فاتح / داكن) في كامل التطبيق
 final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.light);
 
 void main() {
@@ -16,58 +16,63 @@ class MyApp extends StatelessWidget {
     return ValueListenableBuilder<ThemeMode>(
       valueListenable: themeNotifier,
       builder: (context, currentMode, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Kids English App',
-          themeMode: currentMode,
-
-          // 1. الثيم الفاتح (هوية السلسلة البنفسجية الزاهية)
-          theme: ThemeData(
-            brightness: Brightness.light,
-            primaryColor: const Color(0xFF6B0282),
-
-            // خلفية بنفسجية ملكية
-            scaffoldBackgroundColor: const Color(0xFF510162),
-
-            // كروت بيضاء وواضحة
-            cardColor: Colors.white,
-
-            appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              iconTheme: IconThemeData(color: Colors.white),
-              titleTextStyle: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+        return ScreenUtilInit(
+          designSize: const Size(390, 844),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (context, child) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Kids English App',
+              themeMode: currentMode,
+              theme: ThemeData(
+                brightness: Brightness.light,
+                fontFamily: 'Pacifico',
+                fontFamilyFallback: const ['PlaypenSansArabic'],
+                textTheme: ThemeData.light().textTheme.apply(
+                  fontFamily: 'Pacifico',
+                  fontFamilyFallback: const ['PlaypenSansArabic'],
+                ),
+                primaryColor: const Color(0xFF6B0282),
+                scaffoldBackgroundColor: const Color(0xFF510162),
+                cardColor: Colors.white,
+                appBarTheme: AppBarTheme(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  iconTheme: const IconThemeData(color: Colors.white),
+                  titleTextStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
-          ),
-
-          // 2. الثيم الداكن (بنفسجي ليلي داكن جداً ومريح للعين)
-          darkTheme: ThemeData(
-            brightness: Brightness.dark,
-            primaryColor: const Color(0xFF6B0282),
-
-            // 👈 خلفية بنفسجية ليلية شديدة الداكنة (Night Purple)
-            scaffoldBackgroundColor: const Color(0xFF14021A),
-
-            // 👈 كروت بنفسجية داكنة بدرجة متباينة وأنيقة
-            cardColor: const Color(0xFF2A0A33),
-
-            appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              iconTheme: IconThemeData(color: Colors.white),
-              titleTextStyle: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+              darkTheme: ThemeData(
+                brightness: Brightness.dark,
+                fontFamily: 'Pacifico',
+                fontFamilyFallback: const ['PlaypenSansArabic'],
+                textTheme: ThemeData.dark().textTheme.apply(
+                  fontFamily: 'Pacifico',
+                  fontFamilyFallback: const ['PlaypenSansArabic'],
+                ),
+                primaryColor: const Color(0xFF6B0282),
+                scaffoldBackgroundColor: const Color(0xFF14021A),
+                cardColor: const Color(0xFF2A0A33),
+                appBarTheme: AppBarTheme(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  iconTheme: const IconThemeData(color: Colors.white),
+                  titleTextStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
-          ),
 
-          home: const IntroScreen(),
+              home: const IntroScreen(),
+            );
+          },
         );
       },
     );

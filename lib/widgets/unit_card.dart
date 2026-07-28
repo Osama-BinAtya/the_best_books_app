@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:the_best_books_app/utils/string_extensions.dart'; // 👈 استيراد الـ Extension
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:the_best_books_app/utils/string_extensions.dart';
 
 class UnitCard extends StatelessWidget {
   final String unitNumber;
@@ -17,75 +18,75 @@ class UnitCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 💡 تحويل النص إلى لون باستخدام الـ Extension
     final Color cardColor = bookColorHex.toColor();
-
-    // 💡 تحديد لون النص والأيقونات تلقائياً حسب درجة سطوع لون الكتاب
     final bool isLightBg = cardColor.computeLuminance() > 0.5;
     final Color contentColor = isLightBg ? Colors.black87 : Colors.white;
 
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: cardColor,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: cardColor.withOpacity(0.35),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(20),
-          onTap: onTap,
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              children: [
-                // دائرة رقم الوحدة
-                Container(
-                  width: 48,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    color: contentColor.withOpacity(0.15),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: Text(
-                      unitNumber,
-                      style: TextStyle(
-                        color: contentColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+    // Wrap card with a Theme override so it uses the platform default font
+    final baseTheme = Theme.of(context).brightness == Brightness.dark
+        ? ThemeData.dark()
+        : ThemeData.light();
+
+    return Theme(
+      data: Theme.of(context).copyWith(textTheme: baseTheme.textTheme),
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(20.r),
+          boxShadow: [
+            BoxShadow(
+              color: cardColor.withOpacity(0.35),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(20.r),
+            onTap: onTap,
+            child: Padding(
+              padding: EdgeInsets.all(20.w),
+              child: Row(
+                children: [
+                  Container(
+                    width: 48.w,
+                    height: 48.w,
+                    decoration: BoxDecoration(
+                      color: contentColor.withOpacity(0.15),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Text(
+                        unitNumber,
+                        style: TextStyle(
+                          color: contentColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.sp,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 16),
-
-                // عنوان الوحدة
-                Expanded(
-                  child: Text(
-                    unitTitle,
-                    style: TextStyle(
-                      color: contentColor,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                  SizedBox(width: 16.w),
+                  Expanded(
+                    child: Text(
+                      unitTitle,
+                      style: TextStyle(
+                        color: contentColor,
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-
-                // سهم الدخول
-                Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: contentColor,
-                  size: 20,
-                ),
-              ],
+                  Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: contentColor,
+                    size: 20.sp,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
