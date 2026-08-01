@@ -119,6 +119,7 @@ class IntroScreen extends StatelessWidget {
                           'Next',
                           style: TextStyle(
                             fontSize: 20.sp,
+                            fontFamily: 'Roboto',
                             fontWeight: FontWeight.bold,
                           ),
                         ),
