@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           builder: (context, child) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'Kids English App',
+              title: 'The Best',
               themeMode: currentMode,
               theme: ThemeData(
                 brightness: Brightness.light,
