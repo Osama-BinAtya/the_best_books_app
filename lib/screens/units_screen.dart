@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../models/book_model.dart';
-import '../main.dart';
 import '../services/local_data_service.dart';
 import '../widgets/unit_card.dart';
 import 'lesson_screen.dart';
@@ -40,48 +39,7 @@ class _UnitsScreenState extends State<UnitsScreen> {
             fontWeight: FontWeight.w900,
           ),
         ),
-        actions: [
-          ValueListenableBuilder<ThemeMode>(
-            valueListenable: themeNotifier,
-            builder: (context, currentMode, child) {
-              return Transform.translate(
-                offset: Offset(-2.w, 0),
-                child: Container(
-                  margin: EdgeInsets.only(right: 2.w),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: isDark ? Colors.amber : const Color(0xFF9B5DE5),
-                      width: 0.9,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: (isDark ? Colors.amber : const Color(0xFF9B5DE5))
-                            .withOpacity(0.12),
-                        blurRadius: 5,
-                        offset: const Offset(0, 1.5),
-                      ),
-                    ],
-                  ),
-                  child: IconButton(
-                    padding: EdgeInsets.all(4.w),
-                    splashRadius: 18.r,
-                    icon: Icon(
-                      isDark ? Icons.wb_sunny_rounded : Icons.nightlight_round,
-                      color: isDark ? Colors.amber : const Color(0xFF0F172A),
-                    ),
-                    onPressed: () {
-                      themeNotifier.value = isDark
-                          ? ThemeMode.light
-                          : ThemeMode.dark;
-                    },
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
+        actions: [],
       ),
       body: FutureBuilder<BookModel>(
         future: _bookFuture,

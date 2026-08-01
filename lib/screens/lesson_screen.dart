@@ -3,7 +3,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../models/unit_model.dart';
 import '../models/item_model.dart';
-import '../main.dart'; // لاستدعاء themeNotifier
 
 class LessonScreen extends StatefulWidget {
   final UnitModel unit;
@@ -47,63 +46,13 @@ class _LessonScreenState extends State<LessonScreen> {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final pages = widget.unit.pages;
-    // Use the platform/default text theme for lesson pages so English text
-    // remains clear and readable for students (override app-level font).
     final baseTheme = isDark ? ThemeData.dark() : ThemeData.light();
 
     return Theme(
       data: Theme.of(context).copyWith(textTheme: baseTheme.textTheme),
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        appBar: AppBar(
-          title: Text(widget.unit.title),
-          actions: [
-            // زر التحويل بين الفاتح والداكن
-            ValueListenableBuilder<ThemeMode>(
-              valueListenable: themeNotifier,
-              builder: (context, currentMode, child) {
-                return Transform.translate(
-                  offset: Offset(-2.w, 0),
-                  child: Container(
-                    margin: EdgeInsets.only(right: 2.w),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: isDark ? Colors.amber : const Color(0xFF9B5DE5),
-                        width: 0.9,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color:
-                              (isDark ? Colors.amber : const Color(0xFF9B5DE5))
-                                  .withOpacity(0.12),
-                          blurRadius: 5,
-                          offset: const Offset(0, 1.5),
-                        ),
-                      ],
-                    ),
-                    child: IconButton(
-                      padding: EdgeInsets.all(4.w),
-                      splashRadius: 18.r,
-                      icon: Icon(
-                        isDark
-                            ? Icons.wb_sunny_rounded
-                            : Icons.nightlight_round,
-                        color: isDark ? Colors.amber : const Color(0xFF0F172A),
-                      ),
-                      onPressed: () {
-                        themeNotifier.value = isDark
-                            ? ThemeMode.light
-                            : ThemeMode.dark;
-                      },
-                    ),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
+        appBar: AppBar(title: Text(widget.unit.title)),
         body: pages.isEmpty
             ? Center(
                 child: Text(
