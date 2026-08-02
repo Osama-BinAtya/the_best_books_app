@@ -11,6 +11,7 @@ Clone it and make it grow!
 📖 **Structured Curriculum**: Fast content loading powered by local JSON data models (`BookModel`, `UnitModel`, `PageModel`, `ItemModel`).  
 ⚡ **Offline-First**: Complete offline access to books and units without network dependency.  
 📱 **Modern UI**: Clean layout with custom components (`UnitCard`) and smooth navigation between screens.  
+🔊 **Interactive Audio & TTS**: Tap on any image, text, or letter to listen to its pronunciation instantly, boosting interactive learning.
 
 ---
 
