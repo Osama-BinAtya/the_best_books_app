@@ -1,23 +1,24 @@
 # 📚 The Best Books App
 
-An interactive English learning mobile application for children built with **Flutter**, designed with an offline-first architecture for seamless learning without internet connectivity.
+An intuitive and visually engaging Flutter application designed to provide an interactive English learning experience for children with an offline-first architecture. 
+Clone it and make it grow!
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-* 🎨 **Dynamic Color-Theming**: Automatic card background and text contrast calculation for high accessibility.
-* 📖 **Structured Curriculum**: Fast content loading powered by local JSON data models (`BookModel`, `UnitModel`, `PageModel`, `ItemModel`).
-* ⚡ **Offline-First**: Complete offline access to books and units without network dependency.
-* 📱 **Modern UI**: Clean layout with custom components (`UnitCard`) and smooth navigation between screens.
+💡 **Dynamic Color-Theming**: Automatic card background and text contrast calculation for high accessibility.  
+📖 **Structured Curriculum**: Fast content loading powered by local JSON data models (`BookModel`, `UnitModel`, `PageModel`, `ItemModel`).  
+⚡ **Offline-First**: Complete offline access to books and units without network dependency.  
+📱 **Modern UI**: Clean layout with custom components (`UnitCard`) and smooth navigation between screens.  
 
 ---
 
-## 🛠️ Tech Stack
+## 📸 Screenshots
 
-* **Framework:** [Flutter](https://flutter.dev/) (Dart)
-* **Data Source:** Local JSON & Assets (`assets/curriculum.json`)
-* **Architecture:** Layered Architecture (Models, Screens, Services, Widgets, Utils)
+| App Preview |
+|-------------|
+<img width="540" height="1200" alt="home_screen_light_mood" src="https://github.com/user-attachments/assets/cab72c93-db4d-47b1-bd70-048c47e88850" />
 
 ---
 
