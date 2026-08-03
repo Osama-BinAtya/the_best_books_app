@@ -2,7 +2,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../models/book_model.dart';
-import '../utils/string_extensions.dart';
 
 // Public widget for the book card used in HomeScreen's grid.
 class SingleBookShelfCard extends StatelessWidget {
@@ -19,7 +18,7 @@ class SingleBookShelfCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bookThemeColor = book.color.toColor();
+    final bookThemeColor = book.color;
     return GestureDetector(
       onTap: onTap,
       child: Column(

@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:the_best_books_app/utils/string_extensions.dart';
 
 class UnitCard extends StatelessWidget {
   final String unitNumber;
   final String unitTitle;
-  final String bookColorHex;
+  final Color bookColor;
   final VoidCallback onTap;
 
   const UnitCard({
     super.key,
     required this.unitNumber,
     required this.unitTitle,
-    required this.bookColorHex,
+    required this.bookColor,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final Color cardColor = bookColorHex.toColor();
+    final Color cardColor = bookColor;
     final bool isLightBg = cardColor.computeLuminance() > 0.5;
     final Color contentColor = isLightBg ? Colors.black87 : Colors.white;
 

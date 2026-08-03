@@ -39,7 +39,6 @@ class _UnitsScreenState extends State<UnitsScreen> {
             fontWeight: FontWeight.w900,
           ),
         ),
-        actions: [],
       ),
       body: FutureBuilder<BookModel>(
         future: _bookFuture,
@@ -73,7 +72,7 @@ class _UnitsScreenState extends State<UnitsScreen> {
               return UnitCard(
                 unitNumber: '${unit.order}',
                 unitTitle: unit.title,
-                bookColorHex: widget.book.color,
+                bookColor: widget.book.color,
                 onTap: () {
                   Navigator.push(
                     context,

@@ -75,11 +75,9 @@ class _LessonScreenState extends State<LessonScreen> {
                       return Container(
                         width: screenWidth,
                         height: screenHeight,
-                        // لون الورقة: أبيض في الوضع الفاتح، وكحلي داكن مريح في الدارك مود
                         color: isDark ? const Color(0xFF1E293B) : Colors.white,
                         child: Stack(
                           children: [
-                            // العناصر المتموضعة في الصفحة
                             ...page.items.map((item) {
                               return Positioned(
                                 top: item.top * screenHeight,
@@ -88,8 +86,6 @@ class _LessonScreenState extends State<LessonScreen> {
                                 child: _buildIndependentItem(item, isDark),
                               );
                             }),
-
-                            // رقم الصفحة
                             Positioned(
                               bottom: 12,
                               left: 0,
@@ -130,7 +126,6 @@ class _LessonScreenState extends State<LessonScreen> {
     );
   }
 
-  // بناء العناصر بحيث تتغير ألوان النصوص تلقائياً بحسب الثيم
   Widget _buildIndependentItem(ItemModel item, bool isDark) {
     return GestureDetector(
       onTap: () => _playSound(item.audioPath),

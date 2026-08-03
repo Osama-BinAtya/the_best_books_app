@@ -116,7 +116,7 @@ class IntroScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Next',
+                          'Start Learning',
                           style: TextStyle(
                             fontSize: 20.sp,
                             fontFamily: 'Roboto',

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import '../main.dart';
+import 'package:provider/provider.dart';
+import '../providers/theme_provider.dart';
 
 // Small reusable AppBar Lottie button that toggles app theme.
 class DayNightAppBarButton extends StatefulWidget {
@@ -22,7 +23,7 @@ class _DayNightAppBarButtonState extends State<DayNightAppBarButton>
   @override
   void initState() {
     super.initState();
-    _isDark = themeNotifier.value == ThemeMode.dark;
+    _isDark = context.read<ThemeProvider>().isDark;
     _ctrl = AnimationController(vsync: this);
   }
 
@@ -38,7 +39,7 @@ class _DayNightAppBarButtonState extends State<DayNightAppBarButton>
 
     final nextDark = !_isDark;
     setState(() => _isDark = nextDark);
-    themeNotifier.value = _isDark ? ThemeMode.dark : ThemeMode.light;
+    context.read<ThemeProvider>().toggle();
 
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
