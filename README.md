@@ -12,6 +12,7 @@ Clone it and make it grow!
 ⚡ **Offline-First**: Complete offline access to books and units without network dependency.  
 📱 **Modern UI**: Clean layout with custom components (`UnitCard`) and smooth navigation between screens.  
 🔊 **Interactive Audio & TTS**: Tap on any image, text, or letter to listen to its pronunciation instantly, boosting interactive learning.
+🧠 **State Management**: Powered by `Provider` for clean architecture, efficient reactivity, and seamless state flow.
 
 ---
 
